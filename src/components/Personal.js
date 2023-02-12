@@ -1,7 +1,6 @@
 import React from "react";
 import { useState , useContext } from "react";
 import { mainContext } from "../mainContext";
-
 import { Box, TextField, Typography } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -258,6 +257,7 @@ function Personal() {
               </FormControl>
             </Box>
           </Box>
+          <FormControl>
           <TextField
             type="email"
             id="standard-basic"
@@ -274,11 +274,18 @@ function Personal() {
               mt: 1.5,
             }}
           />
+          <label>Must contain "@" and "."</label>
+          </FormControl>
           <TextField
             type="number"
             id="standard-basic"
             label="Mobile Number"
             variant="standard"
+            onKeyPress={(event) => {
+              if (isNaN(Number(event.key))) {
+                event.preventDefault();
+              }
+            }}
             value={inp}
             onChange={(e) => {
               if (e.target.value.length <= 10) {
@@ -325,6 +332,11 @@ function Personal() {
             id="standard-basic"
             label="Number of Dependents"
             variant="standard"
+            onKeyPress={(event) => {
+              if (isNaN(Number(event.key))) {
+                event.preventDefault();
+              }
+            }}
             value={inp2}
             onChange={(e) => {
               if (e.target.value.length <= 1) {

@@ -43,6 +43,11 @@ function Financial() {
               id="standard-basic"
               label="Net Monthly Income"
               variant="standard"
+              onKeyPress={(event) => {
+                if (isNaN(Number(event.key))) {
+                  event.preventDefault();
+                }
+              }}
               value={inp}
               required
               onChange={(e) => {
@@ -92,6 +97,11 @@ function Financial() {
               id="standard-basic"
               label="Monthly Rent / Mortgage Payement"
               variant="standard"
+              onKeyPress={(event) => {
+                if (isNaN(Number(event.key))) {
+                  event.preventDefault();
+                }
+              }}
               value={inp2}
               onChange={(e) => {
                 if (e.target.value.length <= 5) {
@@ -169,6 +179,11 @@ function Financial() {
               id="standard-basic"
               label="Bank Account Number"
               variant="standard"
+              onKeyPress={(event) => {
+                if (isNaN(Number(event.key))) {
+                  event.preventDefault();
+                }
+              }}
               value={inp3}
               onChange={(e) => {
                 if (e.target.value.length <= 10) {
@@ -181,6 +196,7 @@ function Financial() {
               }}
               required
             />
+            <label>Must contain 10 digits</label>
           </Box>
           <Box>
             <TextField
@@ -201,6 +217,7 @@ function Financial() {
               }}
               required
             />
+             <label>Must contain 4 digits</label>
           </Box>
         </Box>
       </Box>

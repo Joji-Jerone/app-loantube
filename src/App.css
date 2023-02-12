@@ -6,3 +6,8 @@ body {
 .bgc {
     background-color: #C60029;
 }
+
+label{
+    font-size: small;
+    
+}

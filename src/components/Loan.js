@@ -6,9 +6,8 @@ import { Box, Typography } from "@mui/material";
 import Input from "@mui/material/Input";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
-import { TextField , MenuItem } from "@mui/material";
+import { MenuItem } from "@mui/material";
 import Select from "@mui/material/Select";
-
 import Holiday from "../assets/holiday.svg";
 import Car from "../assets/car.svg";
 import Debt from "../assets/debt.svg";
@@ -42,6 +41,10 @@ function Loan() {
     });
   }
 
+  function filterNumeric(value) {
+    return value.replace(/[^0-9]/g, '');
+  }
+
   return (
     <Box>
       <Typography variant="h5" sx={{ my: 2 }}>
@@ -69,9 +72,15 @@ function Loan() {
                 id="standard-adornment-amount"
                 type="number"
                 value={inp}
+                inputMode="numeric"
                 required
+                onKeyPress={(event) => {
+                  if (isNaN(Number(event.key))) {
+                    event.preventDefault();
+                  }
+                }}
                 onChange={(e) => {
-                  if (e.target.value.length <= 6) {
+                  if (e.target.value.length <= 6 && e.target.value <= 250000) {
                     setInp(e.target.value);
                     setData({
                       ...data,
@@ -83,6 +92,7 @@ function Loan() {
                   <InputAdornment position="start">€</InputAdornment>
                 }
               />
+              <label>Enter amount between £1000 to £250000</label>
             </FormControl>
           </Box>
           <Box>

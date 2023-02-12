@@ -41,6 +41,11 @@ function Residential() {
               <Input 
               id="standard-adornment-amount" 
               type="number" 
+              onKeyPress={(event) => {
+                if (isNaN(Number(event.key))) {
+                  event.preventDefault();
+                }
+              }}
               value={inp}
               onChange={(e) => {
                 if (e.target.value.length <= 6) {
@@ -52,6 +57,7 @@ function Residential() {
                 }
               }}
               required />
+              <label>Must contain 6 digits</label>
             </FormControl>
           </Box>
           <Box
@@ -66,6 +72,11 @@ function Residential() {
               id="standard-basic"
               label="House Number"
               variant="standard"
+              onKeyPress={(event) => {
+                if (isNaN(Number(event.key))) {
+                  event.preventDefault();
+                }
+              }}
               value={inp2}
               onChange={(e) => {
                 if (e.target.value.length <= 4) {
@@ -86,6 +97,11 @@ function Residential() {
               id="standard-basic"
               label="Flat Number (Optional)"
               variant="standard"
+              onKeyPress={(event) => {
+                if (isNaN(Number(event.key))) {
+                  event.preventDefault();
+                }
+              }}
               value={inp3}
               onChange={(e) => {
                 if (e.target.value.length <= 4) {
@@ -144,9 +160,14 @@ function Residential() {
               id="standard-basic"
               label="Years"
               variant="standard"
+              onKeyPress={(event) => {
+                if (isNaN(Number(event.key))) {
+                  event.preventDefault();
+                }
+              }}
               value={inp4}
               onChange={(e) => {
-                if (e.target.value.length <= 2 && e.target.value < 20) {
+                if (e.target.value.length <= 2 && e.target.value < 50) {
                   setInp4(e.target.value);
                   setData({
                     ...data,
@@ -165,6 +186,11 @@ function Residential() {
               label="Months"
               variant="standard"
               value={inp5}
+              onKeyPress={(event) => {
+                if (isNaN(Number(event.key))) {
+                  event.preventDefault();
+                }
+              }}
               onChange={(e) => {
                 if (e.target.value.length <= 2 && e.target.value <= 11) {
                   setInp5(e.target.value);
