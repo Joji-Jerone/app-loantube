@@ -217,7 +217,7 @@ function Financial() {
               }}
               required
             />
-             <label>Must contain 4 digits</label>
+             <label>Must contain 5 digits</label>
           </Box>
         </Box>
       </Box>
